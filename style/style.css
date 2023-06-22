@@ -102,8 +102,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Open Sans Bold', sans-serif;
-    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    border: 0;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -115,6 +116,12 @@ body {
 /* Navbar */
 .navbar {
     background-color: rgba(0, 0, 0, 0.750);
+    width: 100vw !important;
+}
+
+.navbar-brand {
+    font-family: 'Rowdies', cursive;
+    font-weight: 300;
 }
 
 .navbar .nav-link, .navbar-brand {
@@ -127,6 +134,18 @@ body {
     color: #00b5fd !important;
 }
 
+/* tempat */
+.tempat {
+    position: relative;
+    overflow: hidden;
+}
+
+.tempat .img-tempat {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: -100;
+}
 
 /* Home */
 .home {
@@ -141,6 +160,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    z-index: -1;
 }
 
 @media screen and (max-width: 956px) {
@@ -159,17 +179,16 @@ body {
 
 
 .tempat-home {
-    position: absolute;
     z-index: 1;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.500);
+    background-image: linear-gradient(to bottom ,rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3), black);
     overflow: hidden;
     padding: 5rem !important;
 }
 
 .tempat-home p img {
-    width: 30%;
+    width: 25%;
 }
 
 .home .tempat-home p {
@@ -209,16 +228,46 @@ body {
     min-height: 100vh;
     overflow: hidden;
     background-color: black;
-    background-image: url("../file/6040efe3aff94ba56d34ee470406ed21.gif");
+    background-image: url("../file/2.png");
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.text-about {
-    color: #cc6de7;
+.about .kotak {
+    background-color: #3b2c667a;
+    transform: skewX(-20deg);
+    display: inline-block;
+    box-shadow: -10px 10px #00b5fd;
+}
+
+.about .tempat-about h4 {
+    color: #ffffff;
     text-shadow: 
-    0 0 5px #cc6de7,
-    0 0 10px #cc66e9;
+    0 0 5px #cccccc,
+    0 0 10px #727272;
+    transform: skewX(20deg);
+}
+
+.text-about {
+    font-family: 'Rowdies', cursive;
+    font-size: 5rem;
+    color: #ffffff;
+    text-shadow: 
+    0 0 5px #cccccc,
+    0 0 10px #727272;
+    transform: skewX(20deg);
+}
+
+@media screen and (max-width: 600px) {
+    .text-about {
+        font-size: 3rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .text-about {
+        font-size: 2.2rem;
+    }
 }
 
 .tempat-about {
@@ -286,11 +335,18 @@ body {
 
 .tempat-about .card img {
     display: inline-block;
-    height: 100px;
-    width: 100px;
-    background-color: black;
+    height: 200px;
+    width: 200px;
     border-radius: 50% !important;
     text-align: center;
+}
+
+.maskot-about {
+    transition: transform 0.5s;
+}
+
+.maskot-about:hover {
+    transform: scale(1.1);
 }
 
 
@@ -298,33 +354,94 @@ body {
 .event {
     color: #38b6ff;
     width: 100vw;
-    background-image: url("../file/dd8a0284229d9793a9fb0ba6592d8e8d.gif");
     background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
+    position: relative;
+}
+
+.event .tempat-event {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.event .bg-event {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: -1;
 }
 
 .event .card {
     background-color: #3b2c667a !important;
     color: white !important;
     border-radius: 50px;
+    height: 300px;
 }
 
-.tempat-event {
-    background-color: rgba(0, 0, 0, 0.8);
+.event .card .card-body p {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 300 !important;
 }
+
+.event .card img {
+    width: 40%;
+    height: auto;
+}
+
+.maskot-event {
+    transition: transform 0.5s;
+}
+
+.maskot-event:hover {
+    transform: scale(1.1);
+}
+
+/* .tempat-event {
+    background-color: rgba(0, 0, 0, 0.8);
+} */
 
 
 /* maskot */
+@keyframes maskot {
+    0% {
+        margin-bottom: 0;
+    }
+    50% {
+        margin-bottom: 50px;
+    }
+    100% {
+        margin-bottom: 0;
+    }
+}
+
 .tempat-maskot {
     min-height: 100vh;
     width: 100%;
     position: relative;
+    overflow-x: hidden;
+}
+
+.tempat-maskot .text-maskot {
+    text-shadow: 
+    0 0 5px #ffffff;
 }
 
 .maskot img {
-    height: 75%;
+    height: 100%;
+    display: block;
     position: absolute;
+}
+
+.maskot .maskot-1 {
+    animation: maskot 4s linear infinite;
+}
+
+@media screen and (max-width: 800px) {
+    .maskot img {
+        width: 100%;
+        height: auto;
+    }  
 }
 
 
@@ -333,15 +450,12 @@ body {
 /* timeline */
 .timeline {
     width: 100vw;
-    background-image: url("../file/0bde409698e64daeb4e17fa342a4c4fd.gif");
-    background-position: center;
-    background-repeat: no-repeat;
     overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
-.tempat-timeline {
-    background-color: rgba(0, 0, 0, 0.8);
-}
+
+
 
 .timeline h1 {
     color: #38b6ff;
@@ -381,12 +495,11 @@ body {
 }
 
 .gambar-timeline img {
-    width: 100%;
+    width: 70%;
 }
 
 .timeline .gambar-timeline .gambar-timeline-kiri {
     transform: rotateY(180deg);
-    width: 100%;
     top: 0;
     bottom: 0;
     left: 0;
@@ -394,7 +507,6 @@ body {
 }
 
 .timeline .gambar-timeline .gambar-timeline-kanan {
-    width: 100%;
     top: 0;
     bottom: 0;
     left: 0;
@@ -416,12 +528,21 @@ body {
     position: absolute;
 }
 
+@media screen and (max-width: 650px) {
+    .gambar-timeline img {
+        width: 100%;
+    }
 
-
-
-
+    .timeline-bawah img {
+        width: 100%;
+    }
+}
 
 /* Sponsor */
+.sponsor {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
 .tempat-sponsor {
     border-radius: 100px;
     overflow: hidden;
@@ -430,6 +551,10 @@ body {
 /* Footer */
 footer {
     overflow: hidden;
+}
+
+.footer {
+    width: 100vw;
 }
 
 
